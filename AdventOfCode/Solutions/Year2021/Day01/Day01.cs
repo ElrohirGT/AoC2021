@@ -9,7 +9,7 @@ namespace AdventOfCode.Solutions.Year2021
     {
         private readonly string[] _lines;
 
-        public Day01() : base(01, 2021, "", true)
+        public Day01() : base(01, 2021, "")
         {
             _lines = Input.SplitByNewline();
         }
