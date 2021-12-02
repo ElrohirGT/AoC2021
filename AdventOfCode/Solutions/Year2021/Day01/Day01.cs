@@ -34,7 +34,20 @@ namespace AdventOfCode.Solutions.Year2021
 
         protected override string SolvePartTwo()
         {
-            return null;
+            if (_lines.Length <= 3)
+                return "0";
+
+            int currentWindowIsLargerCount = 0;
+            int previousWindow = int.Parse(_lines[0])+int.Parse(_lines[1])+int.Parse(_lines[2]);
+            for (int i = 3; i < _lines.Length; i++)
+            {
+                int currentWindow = int.Parse(_lines[i])+int.Parse(_lines[i-1])+int.Parse(_lines[i-2]);
+                if (currentWindow > previousWindow)
+                    currentWindowIsLargerCount++;
+                previousWindow = currentWindow;
+            }
+
+            return currentWindowIsLargerCount.ToString();
         }
     }
 }
