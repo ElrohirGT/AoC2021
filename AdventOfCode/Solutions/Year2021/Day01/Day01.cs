@@ -7,9 +7,9 @@ namespace AdventOfCode.Solutions.Year2021
 
     class Day01 : ASolution
     {
-        private string[] _lines;
+        private readonly string[] _lines;
 
-        public Day01() : base(01, 2021, "")
+        public Day01() : base(01, 2021, "", true)
         {
             _lines = Input.SplitByNewline();
         }
@@ -19,15 +19,17 @@ namespace AdventOfCode.Solutions.Year2021
             if (_lines.Length <= 1)
                 return "0";
 
-            int previousIsLowerCount = 0;
+            int currentIsLargerCount = 0;
             int previousValue = int.Parse(_lines[0]);
             for (int i = 1; i < _lines.Length; i++)
             {
                 int currentValue = int.Parse(_lines[i]);
-                if (previousValue < currentValue)
-                    previousIsLowerCount++;
+                if (currentValue > previousValue)
+                    currentIsLargerCount++;
+                previousValue = currentValue;
             }
-            return previousIsLowerCount.ToString();
+
+            return currentIsLargerCount.ToString();
         }
 
         protected override string SolvePartTwo()
