@@ -68,7 +68,7 @@ namespace AdventOfCode.Solutions
                 var now = DateTime.Now;
                 return string.IsNullOrEmpty(result) ? SolutionResult.Empty : new SolutionResult { Answer = result, Time = now - then };
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 if (Debugger.IsAttached)
                 {
